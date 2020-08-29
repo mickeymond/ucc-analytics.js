@@ -1,0 +1,20 @@
+{
+  "name": "ucc-analytics.js",
+  "version": "1.2.0",
+  "description": "UnchainedCarrot Analytics JavaScript Client Library",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mickeymond/ucc-analytics.js.git"
+  },
+  "author": {
+    "name": "Michael Hammond",
+    "email": "mickeymond@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mickeymond/ucc-analytics.js/issues"
+  },
+  "homepage": "https://github.com/mickeymond/ucc-analytics.js"
+}
