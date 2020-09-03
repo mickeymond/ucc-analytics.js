@@ -7,28 +7,38 @@ if(typeof exports != "undefined") {
 
 function Analytics() {
   // Private Interface
-  let baseUrl = '';
-  let initial = {}
+  let baseUrl = 'https://pmxfwkh2ka.execute-api.eu-central-1.amazonaws.com/default/ucc-web-tracker';
+  let custId = '';
+  let srcId = '';
 
-  const init = function(data) {
-    initial = { ...data }
+  const init = function(customerId, sourceId) {
+    custId = customerId;
+    srcId = sourceId;
   }
 
-  const track = function(data) {
+  const track = function(event, data) {
     fetch({
       url: baseUrl,
-      body: { ...initial, ...data },
-      method: 'GET'
+      body: {
+        customerId: custId,
+        sourceId: srcId,
+        event: event,
+        type: 'track',
+        context: {},
+        properties: data,
+        user: {}
+      },
+      method: 'POST'
     });
   }
   
   // Public Interface
   return {
-    init: function(data) {
-      init(data);
+    init: function(customerId, sourceId) {
+      init(customerId, sourceId);
     },
-    track: function(data) {
-      track(data);
+    track: function(event, data) {
+      track(event, data);
     }
   }
 };
