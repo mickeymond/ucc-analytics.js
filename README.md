@@ -7,13 +7,13 @@ Installation and Usage
 
 For Websites
 
-    <script src:"https://unpkg.com/ucc-analytics.js"></script>
+    <script src="https://unpkg.com/ucc-analytics.js"></script>
     <script>
-        analytics.init(customerId, sourceId);
+        analytics.init("customerId", "sourceId");
     </script>
 
 Everywhere else in your website
 
     <script>
-        analytics.track(event, properties);
+        analytics.track("event", { property1: 1, property2: 2 });
     </script>
