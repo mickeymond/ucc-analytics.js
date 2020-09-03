@@ -17,22 +17,21 @@ function Analytics() {
   }
 
   const track = function(event, data) {
-    fetch({
-      url: baseUrl,
-      body: {
-        customerId: custId,
-        sourceId: srcId,
-        event: event,
-        type: 'track',
-        context: {},
-        properties: data,
-        user: {}
-      },
-      method: 'POST'
-    })
-    .then(res => res.json())
-    .then(console.log)
-    .catch(console.log);
+    const reqBody = {
+      customerId: custId,
+      sourceId: srcId,
+      event: event,
+      type: 'track',
+      context: {},
+      properties: data,
+      user: {}
+    }
+
+    fetch(baseUrl, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(reqBody),
+    });
   }
   
   // Public Interface
