@@ -17,12 +17,18 @@ function Analytics() {
   }
 
   const track = function(event, data, user) {
+    const context = {}
+    const url = new URL(window.location.href);
+    url.searchParams.forEach((value, key) => {
+      context[key] = value;
+    });
+
     const reqBody = {
       customerId: custId,
       projectId: projId,
       event: event,
       type: 'track',
-      context: {},
+      context: context,
       properties: data,
       user: user
     }
