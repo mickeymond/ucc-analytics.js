@@ -9,7 +9,8 @@ For Websites
 
     <script src="https://unpkg.com/ucc-analytics.js"></script>
     <script>
-        analytics.init("customerId", "sourceId");
+        analytics.init("customerId", "projectId");
+				analytics.setUser({}); // Initialize User Object If Applicable
     </script>
 
 Everywhere else in your website

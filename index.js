@@ -9,22 +9,27 @@ function Analytics() {
   // Private Interface
   let baseUrl = 'https://pmxfwkh2ka.execute-api.eu-central-1.amazonaws.com/default/ucc-web-tracker';
   let custId = '';
-  let srcId = '';
+  let projId = '';
+	let userData = {};
 
-  const init = function(customerId, sourceId) {
+  const init = function(customerId, projectId) {
     custId = customerId;
-    srcId = sourceId;
+    projId = projectId;
   }
+  
+  const setUser = function(user) {
+		userData = user;
+	}
 
   const track = function(event, data) {
     const reqBody = {
       customerId: custId,
-      sourceId: srcId,
+      projectId: projId,
       event: event,
       type: 'track',
       context: {},
       properties: data,
-      user: {}
+      user: userData
     }
 
     fetch(baseUrl, {
@@ -36,8 +41,11 @@ function Analytics() {
   
   // Public Interface
   return {
-    init: function(customerId, sourceId) {
-      init(customerId, sourceId);
+    init: function(customerId, projectId) {
+      init(customerId, projectId);
+    },
+		setUser: function(user) {
+      setUser(user);
     },
     track: function(event, data) {
       track(event, data);
