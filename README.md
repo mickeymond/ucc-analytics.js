@@ -7,14 +7,15 @@ Installation and Usage
 
 For Websites
 
-<script src="https://unpkg.com/ucc-analytics.js"></script>
-<script>
-  analytics.init("customerId", "projectId"); // Initialize UCC Analytics
-	analytics.setUser({}); // Initialize User Object If Applicable
-</script>
+    <script src="https://unpkg.com/ucc-analytics.js"></script>
+    <script>
+        analytics.init("customerId", "projectId"); // Initialize UCC Analytics
+    </script>
 
 Everywhere else in your website
 
-<script>
-  analytics.track("event", { property1: 1, property2: 2 });
-</script>
+    <script>
+		const eventData = { property1: 1, property2: 2 }
+		const user = { id: "5asd6yjkabsdba" } // optional => defaults to empty Object
+        analytics.track("event", eventData, user);
+    </script>

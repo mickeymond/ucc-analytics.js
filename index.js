@@ -10,18 +10,13 @@ function Analytics() {
   let baseUrl = 'https://pmxfwkh2ka.execute-api.eu-central-1.amazonaws.com/default/ucc-web-tracker';
   let custId = '';
   let projId = '';
-	let userData = {};
 
   const init = function(customerId, projectId) {
     custId = customerId;
     projId = projectId;
   }
-  
-  const setUser = function(user) {
-		userData = user;
-	}
 
-  const track = function(event, data) {
+  const track = function(event, data, user) {
     const reqBody = {
       customerId: custId,
       projectId: projId,
@@ -29,7 +24,7 @@ function Analytics() {
       type: 'track',
       context: {},
       properties: data,
-      user: userData
+      user: user
     }
 
     fetch(baseUrl, {
@@ -44,11 +39,8 @@ function Analytics() {
     init: function(customerId, projectId) {
       init(customerId, projectId);
     },
-		setUser: function(user) {
-      setUser(user);
-    },
-    track: function(event, data) {
-      track(event, data);
+    track: function(event, data, user = {}) {
+      track(event, data, user);
     }
   }
 };
