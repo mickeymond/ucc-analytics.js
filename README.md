@@ -10,7 +10,7 @@ For Websites
 ```
 <script src="https://unpkg.com/ucc-analytics.js"></script>
 <script>
-  analytics.init("customerId", "projectId"); // Initialize UCC Analytics
+  analytics.init("customerId", "projectId", apiKey = 'live_soon_to_be_deprecated'); // Initialize UCC Analytics
 </script>
 ```
 
