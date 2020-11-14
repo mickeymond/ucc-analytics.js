@@ -1,6 +1,6 @@
 {
   "name": "ucc-analytics.js",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "description": "UnchainedCarrot Analytics JavaScript Client Library",
   "main": "index.js",
   "scripts": {},
