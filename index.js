@@ -7,13 +7,15 @@ if(typeof exports != "undefined") {
 
 function Analytics() {
   // Private Interface
-  let baseUrl = 'https://pmxfwkh2ka.execute-api.eu-central-1.amazonaws.com/default/ucc-web-tracker';
-  let custId = '';
-  let projId = '';
+  const BASE_URL = 'https://pmxfwkh2ka.execute-api.eu-central-1.amazonaws.com/default/ucc-web-tracker';
+  let CUSTOMER_ID = '';
+  let PROJECT_ID = '';
+  let API_KEY = '';
 
-  const init = function(customerId, projectId) {
-    custId = customerId;
-    projId = projectId;
+  const init = function(customerId, projectId, apiKey) {
+    CUSTOMER_ID = customerId;
+    PROJECT_ID = projectId;
+    API_KEY = apiKey;
   }
 
   const track = function(event, data, user) {
@@ -24,8 +26,8 @@ function Analytics() {
     });
 
     const reqBody = {
-      customerId: custId,
-      projectId: projId,
+      customerId: CUSTOMER_ID,
+      projectId: PROJECT_ID,
       event: event,
       type: 'track',
       context: context,
@@ -33,17 +35,21 @@ function Analytics() {
       user: user
     }
 
-    fetch(baseUrl, {
+    fetch(BASE_URL, {
       method: 'POST',
       mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-KEY': API_KEY
+      },
       body: JSON.stringify(reqBody),
     });
   }
   
   // Public Interface
   return {
-    init: function(customerId, projectId) {
-      init(customerId, projectId);
+    init: function(customerId, projectId, apiKey = 'live_soon_to_be_deprecated') {
+      init(customerId, projectId, apiKey);
     },
     track: function(event, data, user = {}) {
       track(event, data, user);
